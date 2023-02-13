@@ -31,6 +31,7 @@ from    datetime                import  timedelta, datetime
 """ ---------------------------------------------------------------------------
     Constants
     ----------------------------------------------------------------------- """
+C_VERSION                   = "20230213"
 C_BANNEDFOLDERS             = [     'PersonMetag_dir', 
                                     'Social Activity Notifications',
                                     'Quick Step Settings',
@@ -52,11 +53,10 @@ C_REPORTS                   = {     'readunread':       ['01.html', 'Read/Unread
                                     'toprecipients':    ['03.html', 'Top recipients (People I sent emails to)'],
                                     'topccsenders':     ['04.html', 'Top senders who put me in copy'],
                                     'topgroupsenders':  ['05.html', 'Top senders who put me in a mailing list'],
-                                    'topinviters':      ['06.html', 'Top people who sents me meeting invitations'],
+                                    'topinviters':      ['06.html', 'Top people who sent me meeting invitations'],
                                     'meetinganswers':   ['07.html', 'How I answered to meeting invitations'],
                                     'longestthread':    ['',        'The longest thread in my inbox'],
                                     'meetings':         ['',        'More information about meetings'] }
-C_VERSION                   = "20230211"
 C_TOPLENGTH                 = 5
 C_NBDAYS                    = 365
 C_HTMLFILE                  = 'outlookstats.html'
@@ -323,20 +323,19 @@ def f_htmlsection(filehandle, reporlist):
     ----------------------------------------------------------------------- """
 
 #-- Connect to outlook
-print("""
+print(f"""
  __       ___       __   __        __  ___      ___  __  
 /  \ |  |  |  |    /  \ /  \ |__/ /__`  |   /\   |  /__` 
 \__/ \__/  |  |___ \__/ \__/ |  \ .__/  |  /~~\  |  .__/                                                       
-""")
-print("OutlookStats (ver: " + C_VERSION + ")")
+OutlookStats (ver: {C_VERSION})""")
 
 outlook                     = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
 inbox                       = outlook.GetDefaultFolder(6)
 calendar                    = outlook.GetDefaultFolder(9)
 sent                        = outlook.GetDefaultFolder(5)
 me                          = str(outlook.Session.CurrentUser)
-print("\nGenerating stats for: " + str(me))
-print("Be patient!\n\n")
+print(f"""\nGenerating stats for: {str(me)}
+Be patient!\n\n""")
 
 #-- number of emails read/unread by folder
 print("Counting the number of read/unread emails by folder...")
@@ -420,17 +419,17 @@ fig.write_html('07.html', auto_open=False, full_html=False, default_width="100%"
 
 #-- Time spent in meeting
 print("Computing time spent in meetings...")
-meetinghours, mymeetinghours = f_meetingtime(calendar)
-meetingdays = int(meetinghours / 8)
-mymeetingdays = int(mymeetinghours / 8)
+meetinghours, mymeetinghours= f_meetingtime(calendar)
+meetingdays                 = int(meetinghours / 8)
+mymeetingdays               = int(mymeetinghours / 8)
 
 #-- Conflicting meetings
 print("Counting the number of conflicting meetings...")
-nbconflict = f_conflictingmeetings(calendar)
+nbconflict                  = f_conflictingmeetings(calendar)
 
 #-- Generating HTML
 print("Generating HTML report...")
-htmlstart = '''<hmtl><head><title>OutlookStats</title>
+htmlstart                   = '''<hmtl><head><title>OutlookStats</title>
 <style>a:link,a:visited {color: inherit;text-decoration: none;} body,html{margin:0;padding:0;width:100%;height:100%}.wrapper{width:100%;height:100%}footer,section{width:100%}.row{margin:auto;width:100%;max-width:60em}.col-2{display:inline-block;vertical-align:top}.col-2{width:100%}.row h1{margin:0;font-weight:300;font-size:40px}.sec-about{text-align:center}.row-grey{background:#111;color:#ddd}.sec-about .row-grey .row{padding:3em 0}.sec-news{text-align:center}.sec-news .row>h1{padding-bottom:.5em}.sec-news .col-2{padding:1em}.post{position:relative;height:700px;cursor:pointer;@extend %transition;box-shadow:0 0 10px rgba(0,0,0,.75)}.post h1,.post p,.post span{position:absolute}.post span{padding:.25em .5em;font-weight:700;color:#fff;opacity:.85}.post h1{bottom:0;width:100%;font-size:1.15em;line-height:2em;text-align:center;color:#fff;background:rgba(0,0,0,.75)}footer{background:#111}footer p{font-size:.85em;text-align:center;color:#aaa}</style>
 <body><div class="wrapper"><section class="sec-about"><div class="row-grey"><div class="row"><article class="col-2">'''
 htmlstart += '<h1>OutlookStats for ' + me + '</h1>Over the last ' + str(C_NBDAYS) + ' days</article></div></div></section><section class="sec-news">'
