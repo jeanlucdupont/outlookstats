@@ -12,6 +12,8 @@ Every year, I review my Outlook statistics and see where I wasted my time. I’d
 
 ## Introducing OutlookStats.
 
+Sample report [here](https://securityrabbits.com/outlookstats.html)! 
+
 OutlookStats will answer the following questions, over the last year:
 - How many emails did I read and not read?
 - What is the longest thread (that could have been managed by a simple phone call)?
