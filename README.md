@@ -29,5 +29,5 @@ OutlookStats will answer the following questions, over the last year:
 
 Get the right information to:
 - Clean up your Outlook.
-- Change your habbits.
+- Change your habits.
 - Be more productive.
