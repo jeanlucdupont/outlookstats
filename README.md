@@ -1,6 +1,6 @@
 # outlookstats
 
-*Email is Evil* (like Excel).
+## Email is Evil (like Excel).
 - Email is a productivity killer.
 - Reading email is usually not productive.
 - Reading emails where you are in CC is rarely productive.
@@ -8,7 +8,9 @@
 - Oh, but wait, the emails that I write are productive, right?
 
  
-Every year, I review my Outlook statistics and see where I wasted my time. I’d expect Outlook to provide this information natively, but I do it manually. Until now. *Introducing OutlookStats.*
+Every year, I review my Outlook statistics and see where I wasted my time. I’d expect Outlook to provide this information natively, but I do it manually. Until now. 
+
+## Introducing OutlookStats.
 
 OutlookStats will answer the following questions, over the last year:
 - How many emails did I read and not read?
