@@ -15,7 +15,7 @@
     To add: Top senders putting me in BCC
  
     Author:         JL Dupont
-    Date/version:   20230211
+    Date/version:   20230213
 """
 
 """ ---------------------------------------------------------------------------
