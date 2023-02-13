@@ -1,4 +1,4 @@
-# outlookstats
+# OutlookStats
 
 ## Email is Evil (like Excel).
 - Email is a productivity killer.
