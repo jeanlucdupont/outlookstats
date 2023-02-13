@@ -373,7 +373,7 @@ fig.write_html("02.html")
 
 #-- Longest thread
 print("Finding the longest thread...")
-#longest_threads = f_longestthread(inbox)
+longest_threads = f_longestthread(inbox)
 
 #-- Top recipients
 print("Finding top recipients where I am a sender...")
@@ -428,16 +428,10 @@ mymeetingdays = int(mymeetinghours / 8)
 print("Counting the number of conflicting meetings...")
 nbconflict = f_conflictingmeetings(calendar)
 
-
-longest_threads = [19, "Confidential: Project MKUltra"]
 #-- Generating HTML
 print("Generating HTML report...")
 htmlstart = '''<hmtl><head><title>OutlookStats</title>
-<style>a:link,
-a:visited {
-  color: inherit;
-  text-decoration: none;
-}body,html{margin:0;padding:0;width:100%;height:100%}.wrapper{width:100%;height:100%}footer,section{width:100%}.row{margin:auto;width:100%;max-width:60em}.col-2{display:inline-block;vertical-align:top}.col-2{width:100%}.row h1{margin:0;font-weight:300;font-size:40px}.sec-about{text-align:center}.row-grey{background:#111;color:#ddd}.sec-about .row-grey .row{padding:3em 0}.sec-news{text-align:center}.sec-news .row>h1{padding-bottom:.5em}.sec-news .col-2{padding:1em}.post{position:relative;height:700px;cursor:pointer;@extend %transition;box-shadow:0 0 10px rgba(0,0,0,.75)}.post h1,.post p,.post span{position:absolute}.post span{padding:.25em .5em;font-weight:700;color:#fff;opacity:.85}.post h1{bottom:0;width:100%;font-size:1.15em;line-height:2em;text-align:center;color:#fff;background:rgba(0,0,0,.75)}footer{background:#111}footer p{font-size:.85em;text-align:center;color:#aaa}</style>
+<style>a:link,a:visited {color: inherit;text-decoration: none;} body,html{margin:0;padding:0;width:100%;height:100%}.wrapper{width:100%;height:100%}footer,section{width:100%}.row{margin:auto;width:100%;max-width:60em}.col-2{display:inline-block;vertical-align:top}.col-2{width:100%}.row h1{margin:0;font-weight:300;font-size:40px}.sec-about{text-align:center}.row-grey{background:#111;color:#ddd}.sec-about .row-grey .row{padding:3em 0}.sec-news{text-align:center}.sec-news .row>h1{padding-bottom:.5em}.sec-news .col-2{padding:1em}.post{position:relative;height:700px;cursor:pointer;@extend %transition;box-shadow:0 0 10px rgba(0,0,0,.75)}.post h1,.post p,.post span{position:absolute}.post span{padding:.25em .5em;font-weight:700;color:#fff;opacity:.85}.post h1{bottom:0;width:100%;font-size:1.15em;line-height:2em;text-align:center;color:#fff;background:rgba(0,0,0,.75)}footer{background:#111}footer p{font-size:.85em;text-align:center;color:#aaa}</style>
 <body><div class="wrapper"><section class="sec-about"><div class="row-grey"><div class="row"><article class="col-2">'''
 htmlstart += '<h1>OutlookStats for ' + me + '</h1>Over the last ' + str(C_NBDAYS) + ' days</article></div></div></section><section class="sec-news">'
 f = open(C_HTMLFILE, "w")
@@ -490,7 +484,7 @@ f.write(C_INFOSTART                 +
 f.write('</section><footer><div class="row"><p>&copy; 2023 <a href="https://www.linkedin.com/in/jld-ciso/" target="_blank">Jean-Luc Dupont</a></p></div></footer></div></body></html>')
 f.close()
 print("Launching report in browser...")
-webbrowser.open('outlookstats.html', new=2)
+webbrowser.open(C_HTMLFILE, new=2)
 
 
 """ ---------------------------------------------------------------------------
