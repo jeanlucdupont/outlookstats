@@ -12,7 +12,7 @@ Every year, I review my Outlook statistics and see where I wasted my time. I’d
 
 ## Introducing OutlookStats.
 
-###### Sample report [here](https://securityrabbits.com/outlookstats.html)! 
+###### :globe_with_meridians: Sample report [here](https://securityrabbits.com/outlookstats.html)! :globe_with_meridians:
 
 OutlookStats will answer the following questions, over the last year:
 - How many emails did I read and not read?
